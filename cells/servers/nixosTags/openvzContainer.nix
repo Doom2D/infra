@@ -27,6 +27,8 @@
     instanceIp = cfg.ip;
   in
     lib.mkIf cfg.enable {
+      # Force 22 port for SSH, because it is a special forwarded port
+      services.openssh.ports = lib.mkForce [22];
       networking.useNetworkd = true;
       systemd.network.networks.venet0 = {
         name = "venet0";

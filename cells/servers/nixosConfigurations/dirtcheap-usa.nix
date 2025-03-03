@@ -13,6 +13,7 @@ in {
   imports = [
     tags.disableDocumentation
     tags.openvzContainer
+    tags.ssh
     inputs.d2df-flake.nixosModules.d2dfServer
     inputs.d2df-flake.nixosModules.d2dfMaster
     inputs.d2df-flake.nixosModules.d2dmpMaster
@@ -24,7 +25,6 @@ in {
     instanceIp = "10.10.66.10";
     timeZone = "America/New_York";
     hostName = "cheaupsa";
-    sshKeys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHik2xQpWzL47QkJJq9oqgyAiG2HjlSsSUSLYLkbFqU8 enhance"];
   in {
     inherit (cell) bee;
 
@@ -32,12 +32,6 @@ in {
     time.timeZone = timeZone;
     networking.hostName = hostName;
     deployment.openvz.ip = instanceIp;
-
-    users.users.root.openssh.authorizedKeys.keys = sshKeys;
-    services.openssh = {
-      enable = true;
-      ports = [22];
-    };
 
     services.d2dfMasterServer = {
       enable = true;
