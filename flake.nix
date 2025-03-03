@@ -4,10 +4,12 @@
     std,
     hive,
     ...
-  } @ inputs:
+  } @ inputs: let
+    lib = import ./lib {nixpkgs = inputs.nixpkgs;};
+  in
     hive.growOn
     {
-      inherit inputs;
+      inputs = inputs // {inherit lib;};
       cellsFrom = ./cells;
       cellBlocks = with std.blockTypes;
       with hive.blockTypes; [

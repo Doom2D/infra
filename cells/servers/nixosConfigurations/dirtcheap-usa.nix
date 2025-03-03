@@ -8,6 +8,7 @@
   ...
 }: let
   tags = cell.nixosTags;
+  inherit (inputs.lib) natPort;
 in {
   imports = [
     tags.disableDocumentation
@@ -17,15 +18,9 @@ in {
     inputs.d2df-flake.nixosModules.d2dmpMaster
   ];
   config = let
+    port = natPort natStart natPortsCount;
     natStart = 1000;
     natPortsCount = 20;
-    natPortFunc = natStart: natPortsCount: num: let
-      inNat = natStart + num;
-    in
-      if inNat >= natStart + natPortsCount || inNat < natStart
-      then lib.throw "Port not in NAT range!"
-      else inNat;
-    natPort = natPortFunc natStart natPortsCount;
     instanceIp = "10.10.66.10";
     timeZone = "America/New_York";
     hostName = "cheaupsa";
@@ -47,7 +42,7 @@ in {
     services.d2dfMasterServer = {
       enable = true;
       openFirewall = true;
-      port = natPort 0;
+      port = port 0;
       package = pkgs.doom2d-forever-master-server;
     };
     services.d2dmpMasterServer = {
@@ -58,7 +53,7 @@ in {
         name = "d2dmp_ms.py";
         hash = "sha256-DcMU8IgjcWdgkvJoh1UygmQKnRX+jLhUCmHt8xLjfgo=";
       };
-      port = natPort 1;
+      port = port 1;
     };
     services.d2df = let
       name = mode: "New York ${mode}";
@@ -72,7 +67,7 @@ in {
           template.classic
           {
             name = name "DM";
-            port = natPort 2;
+            port = port 2;
             rcon = {
               enable = false;
             };
@@ -87,7 +82,7 @@ in {
           template.coop
           {
             name = name "Cooperative";
-            port = natPort 3;
+            port = port 3;
             rcon = {
               enable = false;
             };
