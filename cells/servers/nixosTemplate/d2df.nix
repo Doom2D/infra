@@ -64,7 +64,7 @@
   in
     withPatch;
   disableGraphicsSettings = {
-    r_maxfps = 0;
+    r_maxfps = 1;
     r_vsync = 0;
     r_fullscreen = 0;
     r_bpp = 16;
