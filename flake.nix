@@ -14,10 +14,12 @@
         (functions "bee")
         (functions "nixosTemplate")
         nixosConfigurations
+        colmenaConfigurations
       ];
     }
     {
       nixosConfigurations = hive.collect self "nixosConfigurations";
+      colmenaHive = hive.collect self "colmenaConfigurations";
     };
 
   inputs = {
@@ -31,6 +33,10 @@
       inputs = {nixpkgs.follows = "nixpkgs";};
     };
 
+    colmena = {
+      url = "github:zhaofengli/colmena";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     haumea = {
       url = "github:nix-community/haumea";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -43,6 +49,7 @@
     hive = {
       url = "github:divnix/hive";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.colmena.follows = "colmena";
     };
   };
 }
