@@ -12,7 +12,8 @@
       cellBlocks = with std.blockTypes;
       with hive.blockTypes; [
         (functions "bee")
-        (functions "nixosTemplate")
+        (functions "nixosTemplates")
+        (functions "nixosTags")
         nixosConfigurations
         colmenaConfigurations
       ];

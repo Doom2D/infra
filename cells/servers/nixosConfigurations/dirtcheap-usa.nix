@@ -6,10 +6,12 @@
   lib,
   pkgs,
   ...
-}: {
+}: let
+  tags = cell.nixosTags;
+in {
   imports = [
-    inputs.nixos-openvz.nixosModules.ovz-container
-    #inputs.nixos-openvz.nixosModules.ovz-installer
+    tags.disableDocumentation
+    tags.openvzContainer
     inputs.d2df-flake.nixosModules.d2dfServer
     inputs.d2df-flake.nixosModules.d2dfMaster
     inputs.d2df-flake.nixosModules.d2dmpMaster
@@ -34,34 +36,13 @@
     system.stateVersion = "25.05";
     time.timeZone = timeZone;
     networking.hostName = hostName;
-    networking.useNetworkd = true;
-    systemd.network.networks.venet0 = {
-      name = "venet0";
-      # Change to your assigned IP
-      address = ["${instanceIp}/32"];
-      networkConfig = {
-        DHCP = "no";
-        DefaultRouteOnDevice = "yes";
-        ConfigureWithoutCarrier = "yes";
-      };
-    };
-    services.resolved.enable = false;
-    networking.resolvconf = {
-      enable = true;
-      extraConfig = "name_servers='1.1.1.1'";
-    };
+    deployment.openvz.ip = instanceIp;
 
     users.users.root.openssh.authorizedKeys.keys = sshKeys;
     services.openssh = {
       enable = true;
       ports = [22];
     };
-    documentation.enable = false;
-    programs.bash.completion.enable = false;
-    xdg.icons.enable = false;
-    xdg.mime.enable = false;
-    xdg.sounds.enable = false;
-    environment.defaultPackages = [];
 
     services.d2dfMasterServer = {
       enable = true;
@@ -85,7 +66,7 @@
       enable = true;
 
       servers = let
-        template = cell.nixosTemplate.d2df;
+        template = cell.nixosTemplates.d2df;
       in {
         classic = (
           template.classic
