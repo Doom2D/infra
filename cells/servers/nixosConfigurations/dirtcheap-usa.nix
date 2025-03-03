@@ -14,9 +14,9 @@ in {
     tags.disableDocumentation
     tags.openvzContainer
     tags.ssh
+    tags.d2dfMaster
+    tags.d2dmpMaster
     inputs.d2df-flake.nixosModules.d2dfServer
-    inputs.d2df-flake.nixosModules.d2dfMaster
-    inputs.d2df-flake.nixosModules.d2dmpMaster
   ];
   config = let
     port = natPort natStart natPortsCount;
@@ -33,22 +33,9 @@ in {
     networking.hostName = hostName;
     deployment.openvz.ip = instanceIp;
 
-    services.d2dfMasterServer = {
-      enable = true;
-      openFirewall = true;
-      port = port 0;
-      package = pkgs.doom2d-forever-master-server;
-    };
-    services.d2dmpMasterServer = {
-      enable = true;
-      openFirewall = true;
-      package = pkgs.fetchurl {
-        url = "https://raw.githubusercontent.com/Doom2D/Doom2D-Multiplayer/refs/heads/v0.6/Masterserver/d2dmp_ms.py";
-        name = "d2dmp_ms.py";
-        hash = "sha256-DcMU8IgjcWdgkvJoh1UygmQKnRX+jLhUCmHt8xLjfgo=";
-      };
-      port = port 1;
-    };
+    services.d2dfMasterServer.port = port 0;
+    services.d2dmpMasterServer.port = port 1;
+
     services.d2df = let
       name = mode: "New York ${mode}";
     in {
