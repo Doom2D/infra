@@ -1,0 +1,49 @@
+From 5d882b759d07787f4da7c7a987aa5994522cad64 Mon Sep 17 00:00:00 2001
+From: polybluez <163671824+polybluez@users.noreply.github.com>
+Date: Mon, 3 Mar 2025 18:06:09 +0300
+Subject: [PATCH] Experimental network patch
+
+---
+ src/game/g_main.pas   | 8 ++------
+ src/game/g_window.pas | 2 ++
+ 2 files changed, 4 insertions(+), 6 deletions(-)
+
+diff --git a/src/game/g_main.pas b/src/game/g_main.pas
+index 0dbdab7..9db4ff0 100644
+--- a/src/game/g_main.pas
++++ b/src/game/g_main.pas
+@@ -758,16 +758,12 @@ end;
+ 
+ procedure Update ();
+ begin
+-  // remember old mobj positions, prepare for update
+-  g_Game_PreUpdate();
+-  // server: receive client commands for new frame
+-  // client: receive game state changes from server
+-       if (NetMode = NET_SERVER) then g_Net_Host_Update()
+-  else if (NetMode = NET_CLIENT) then g_Net_Client_Update();
+   // think
+   g_Game_Update();
+   // server: send any accumulated outgoing data to clients
+   if NetMode = NET_SERVER then g_Net_Flush();
++  // remember old mobj positions, prepare for update
++  g_Game_PreUpdate();
+ end;
+ 
+ 
+diff --git a/src/game/g_window.pas b/src/game/g_window.pas
+index be7f52f..b79e88f 100644
+--- a/src/game/g_window.pas
++++ b/src/game/g_window.pas
+@@ -159,6 +159,8 @@ begin
+ 
+   g_Map_ProfilersBegin();
+   g_Mons_ProfilersBegin();
++       if (NetMode = NET_SERVER) then g_Net_Host_Update()
++  else if (NetMode = NET_CLIENT) then g_Net_Client_Update();
+ 
+   t := Time_Delta div UPS_INTERVAL;
+   if t > 0 then
+-- 
+2.48.1
+

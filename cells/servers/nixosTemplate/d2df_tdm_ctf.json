@@ -1,0 +1,96 @@
+[
+    {
+        "source": "DART.dfz",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "CTF2_NFK.dfz",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "ctf_conflict_th.dfz",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "CTF_Data_Theft.dfz",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "ctf_doublefort_th.dfz",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "CTF_FS.dfz",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "CTF_StayAlive2.dfz",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "CTF_TORMENT.dfz",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "CTF_UTES.dfz",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "PrikolSoft_CTF.wad",
+        "maps": [
+            "MAP01",
+            "MAP02",
+            "MAP03",
+            "MAP04",
+            "MAP05"
+        ]
+    },
+    {
+        "source": "Castle_CTF.wad",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "CTF1_NFK.wad",
+        "maps": [
+            "MAP01",
+            "MAP02"
+        ]
+    },
+    {
+        "source": "AHACOP2.wad",
+        "maps": [
+            "AHACOP"
+        ]
+    },
+    {
+        "source": "DF_CTF_MAPS.wad",
+        "maps": [
+            "MAP01",
+            "MAP02",
+            "MAP03",
+            "MAP04",
+            "MAP05",
+            "MAP06"
+        ]
+    }
+]

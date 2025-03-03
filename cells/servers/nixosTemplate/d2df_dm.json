@@ -1,0 +1,682 @@
+[
+    {
+        "source": "YE0F_DM.dfz",
+        "maps": [
+            "map01",
+            "map02",
+            "map03",
+            "map04",
+            "map05",
+            "map06",
+            "map07",
+            "map08",
+            "map09",
+            "map11",
+            "MAP10",
+            "MAP12",
+            "MAP13",
+            "MAP14",
+            "MAP15",
+            "MAP16",
+            "MAP17",
+            "MAP18",
+            "MAP19",
+            "MAP20",
+            "MAP21",
+            "MAP22"
+        ]
+    },
+    {
+        "source": "SUPERDM2.dfz",
+        "maps": [
+            "map01"
+        ]
+    },
+    {
+        "source": "Stoyak_DM.dfz",
+        "maps": [
+            "map01"
+        ]
+    },
+    {
+        "source": "roof.dfz",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "remtake.dfz",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "REALTOURNAMENT.dfz",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "pyramid.dfz",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "Paindm2.dfz",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "ODMM.dfz",
+        "maps": [
+            "MAP01",
+            "MAP02",
+            "MAP03",
+            "MAP04"
+        ]
+    },
+    {
+        "source": "mystery.dfz",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "mw_run.dfz",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "MinaDM.dfz",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "MegaSupDM.dfz",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "meat-forever.dfz",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "limbo.dfz",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "lift_d1.dfz",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "Hazard.dfz",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "GreyDM.dfz",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "EmptyCity_th.dfz",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "Dwango51.dfz",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "dm_winter.dfz",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "dm_underground_arena.dfz",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "dm_powerdm.dfz",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "DM_Cubes.dfz",
+        "maps": [
+            "MAP01",
+            "MAP02"
+        ]
+    },
+    {
+        "source": "dm_brownmadness.dfz",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "dm_bigsquares.dfz",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "DF_Logo_v1_2b.dfz",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "coldstar.dfz",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "cityhall.dfz",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "City00.dfz",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "autotrain.dfz",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "apprehension_ar.zip",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "64DM.wad",
+        "maps": [
+            "MAP01",
+            "MAP02",
+            "MAP03",
+            "MAP04",
+            "MAP05"
+        ]
+    },
+    {
+        "source": "ARHEODM.wad",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "ASCENT.wad",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "bible Black v2.wad",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "blocked2.wad",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "Bloody Mess.wad",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "B_SKL_DM_AE.wad",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "Dash.wad",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "DDF_HW.wad",
+        "maps": [
+            "MAP01",
+            "MAP02",
+            "MAP03",
+            "MAP04",
+            "MAP05",
+            "MAP06"
+        ]
+    },
+    {
+        "source": "Deadline.wad",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "Dwa1ngo1.1.wad",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "dwango5.8.wad",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "dwango6.7.wad",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "EmptyCity.wad",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "Fastway.wad",
+        "maps": [
+            "MAP01",
+            "MAP02"
+        ]
+    },
+    {
+        "source": "FirstDM.wad",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "GEOLOGICAL_BASE_II.WAD",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "HospDM.wad",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "HOT_DM_MAPS.wad",
+        "maps": [
+            "MAP01",
+            "MAP02",
+            "MAP03"
+        ]
+    },
+    {
+        "source": "Laboration.wad",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "LittleDM.wad",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "LOMAJ.wad",
+        "maps": [
+            "MAP01",
+            "MAP02"
+        ]
+    },
+    {
+        "source": "MAP01m.wad",
+        "maps": [
+            "MAP02"
+        ]
+    },
+    {
+        "source": "MEGADM_2.wad",
+        "maps": [
+            "LEVEL"
+        ]
+    },
+    {
+        "source": "megadm-hipster.wad",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "MicroDM.wad",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "paindm.wad",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "PHOBOS.WAD",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "Rock_no_mus.wad",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "Stargazers_ae.wad",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "superdm-3d.wad",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "SUPERDM150.wad",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "SUPERDM_BIG.wad",
+        "maps": [
+            "MP01"
+        ]
+    },
+    {
+        "source": "Sur3.wad",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "SurMP.wad",
+        "maps": [
+            "MAP01",
+            "MAP02",
+            "MAP03",
+            "MAP04",
+            "MAP05",
+            "MAP06",
+            "MAP07",
+            "MAP08",
+            "MAP09",
+            "MAP10",
+            "MAP11",
+            "MAP12",
+            "MAP13",
+            "MAP14",
+            "MAP15"
+        ]
+    },
+    {
+        "source": "techbuilding_j.wad",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "TurboDM.wad",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "darklab_remix.dfz",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "HorrorDM.dfz",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "AM3.wad",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "DDOM.dfz",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "HOUSE8.dfz",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "Paindm3.dfz",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "Platphobos.dfz",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "Building_v3.dfz",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "FUN_AREA.dfz",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "KOTH.dfz",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "RvB2.dfz",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "ZEF1.dfz",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "Base.wad",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "Bloodlust.wad",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "BloodMP.dfz",
+        "maps": [
+            "MAP01",
+            "MAP02",
+            "MAP03",
+            "MAP04",
+            "MAP05",
+            "MAP06",
+            "MAP07",
+            "MAP08",
+            "MAP09",
+            "MAP10",
+            "MAP11"
+        ]
+    },
+    {
+        "source": "Castlevania.wad",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "Crossdark.wad",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "Darklab.dfz",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "DF_DM_MAPS.wad",
+        "maps": [
+            "MAP01",
+            "MAP02",
+            "MAP03",
+            "MAP04",
+            "MAP05",
+            "MAP06",
+            "MAP07",
+            "MAP08"
+        ]
+    },
+    {
+        "source": "HELLGATE.wad",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "kakaoDM.dfz",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "LIFT.wad",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "MA.wad",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "MEAT.wad",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "MEGADM.wad",
+        "maps": [
+            "MAP01",
+            "MAP02"
+        ]
+    },
+    {
+        "source": "Phobos.wad",
+        "maps": [
+            "MAP01"
+        ]
+    },
+    {
+        "source": "PrikolSoft.wad",
+        "maps": [
+            "MAP01",
+            "MAP02",
+            "MAP03",
+            "MAP04",
+            "MAP05",
+            "MAP06",
+            "MAP07",
+            "MAP08",
+            "MAP09"
+        ]
+    },
+    {
+        "source": "Snikers.dfz",
+        "maps": [
+            "MAP01",
+            "MAP02",
+            "MAP03",
+            "MAP04",
+            "MAP05",
+            "MAP06",
+            "MAP07",
+            "MAP08"
+        ]
+    },
+    {
+        "source": "SUPERDM.wad",
+        "maps": [
+            "MAP01",
+            "MAP02"
+        ]
+    },
+    {
+        "source": "ZADOOMKA.wad",
+        "maps": [
+            "MAP01"
+        ]
+    }
+]
