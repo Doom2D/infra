@@ -15,7 +15,7 @@
     deployment.openvz = {
       enable = lib.mkEnableOption "changes to make this configuration bootable as an openvz instance" // {default = true;};
       ip = lib.mkOption {
-        type = lib.types.string;
+        type = lib.types.str;
         description = ''
           IP address assigned to this instance.
         '';

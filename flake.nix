@@ -36,6 +36,15 @@
       inputs = {nixpkgs.follows = "nixpkgs";};
     };
 
+    nixos-anywhere = {
+      url = "github:nix-community/nixos-anywhere/main";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.disko.follows = "nixpkgs";
+    };
+    disko = {
+      url = "github:nix-community/disko/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     colmena = {
       url = "github:zhaofengli/colmena";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -48,7 +57,6 @@
       url = "github:divnix/std";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
     hive = {
       url = "github:divnix/hive";
       inputs.nixpkgs.follows = "nixpkgs";
