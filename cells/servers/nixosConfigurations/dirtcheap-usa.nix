@@ -15,6 +15,15 @@
     inputs.d2df-flake.nixosModules.d2dmpMaster
   ];
   config = let
+    natStart = 1000;
+    natPortsCount = 20;
+    natPortFunc = natStart: natPortsCount: num: let
+      inNat = natStart + num;
+    in
+      if inNat >= natStart + natPortsCount || inNat < natStart
+      then lib.throw "Port not in NAT range!"
+      else inNat;
+    natPort = natPortFunc natStart natPortsCount;
     instanceIp = "10.10.66.10";
     timeZone = "America/New_York";
     hostName = "cheaupsa";
@@ -57,7 +66,7 @@
     services.d2dfMasterServer = {
       enable = true;
       openFirewall = true;
-      port = 1010;
+      port = natPort 0;
       package = pkgs.doom2d-forever-master-server;
     };
     services.d2dmpMasterServer = {
@@ -68,7 +77,7 @@
         name = "d2dmp_ms.py";
         hash = "sha256-DcMU8IgjcWdgkvJoh1UygmQKnRX+jLhUCmHt8xLjfgo=";
       };
-      port = 1009;
+      port = natPort 1;
     };
     services.d2df = let
       name = mode: "New York ${mode}";
@@ -78,22 +87,11 @@
       servers = let
         template = cell.nixosTemplate.d2df;
       in {
-        coop = (
-          template.coop
-          {
-            name = name "Cooperative";
-            port = 1001;
-            rcon = {
-              enable = false;
-            };
-            order = lib.mkForce 2;
-          }
-        );
         classic = (
           template.classic
           {
             name = name "DM";
-            port = 1000;
+            port = natPort 2;
             rcon = {
               enable = false;
             };
@@ -102,6 +100,21 @@
               filterMessages = false;
             };
             order = lib.mkForce 1;
+          }
+        );
+        coop = (
+          template.coop
+          {
+            name = name "Cooperative";
+            port = natPort 3;
+            rcon = {
+              enable = false;
+            };
+            logs = {
+              enable = false;
+              filterMessages = false;
+            };
+            order = lib.mkForce 2;
           }
         );
       };
