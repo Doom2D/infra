@@ -13,4 +13,14 @@ in {
       targetUser = "root";
     };
   };
+
+  dirtcheap-nsk = {
+    imports = [nixosConfigurations.dirtcheap-nsk];
+
+    deployment = {
+      targetHost = "193.233.84.243";
+      targetPort = 7022;
+      targetUser = "root";
+    };
+  };
 }
