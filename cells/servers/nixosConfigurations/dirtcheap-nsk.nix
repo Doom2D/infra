@@ -17,6 +17,7 @@ in {
     tags.d2dmpMaster
     inputs.disko.nixosModules.disko
     inputs.d2df-flake.nixosModules.d2dfServer
+    inputs.d2df-flake.nixosModules.d2dmpServer
 
     # ~Very important if you want the VM to boot!~
     (modulesPath + "/profiles/qemu-guest.nix")
@@ -124,8 +125,19 @@ in {
     services.d2dfMasterServer.port = port 0;
     services.d2dmpMasterServer.port = port 1;
 
+    services.d2dmp = lib.mkMerge [
+      (cell.nixosTemplates.d2dmp.deathmatch {})
+      {
+        settings = {
+          sv_name = lib.mkForce "Novosibirsk DM";
+          sv_welcome = lib.mkForce "------> t.me/doom2d | doom2d.org <-------";
+          sv_port = lib.mkForce 14931;
+        };
+      }
+    ];
+
     services.d2df = let
-      name = mode: "Test Novosibirsk ${mode}";
+      name = mode: "Novosibirsk ${mode}";
     in {
       enable = true;
 
@@ -137,6 +149,7 @@ in {
           {
             name = name "DM";
             port = port 2;
+            ping = true;
             rcon = {
               enable = false;
             };

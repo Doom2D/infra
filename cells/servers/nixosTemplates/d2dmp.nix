@@ -8,7 +8,7 @@ in {
     serverAttrs = rec {
       enable = true;
       swiftshaderD3d8Dll = ./d3d8.dll;
-      wine = cell.bee.pkgs.legacyPackages.wineWow64Packages.minimal.override {
+      wine = cell.bee.pkgs.wineWow64Packages.minimal.override {
         wineRelease = "stable";
         x11Support = true;
       };
@@ -50,8 +50,8 @@ in {
         sv_ipbans = 1;
         sv_cycle_maps = 2;
         sv_cheats = 0;
-        sv_mastersrv = "104.168.51.130:1009";
-        sv_slist = "104.168.51.130:1009";
+        sv_mastersrv = "104.168.51.130:1001";
+        sv_slist = "104.168.51.130:1001";
         sv_slist_upd = 60;
         sv_voting = 1;
         sv_voting_time = 7;
