@@ -29,7 +29,7 @@ in {
     interface = "ens3";
     timeZone = "Asia/Novosibirsk";
     hostName = "cheapnsk";
-    name = mode: "${mode} The Hometown of rs.falcon - Novosibirsk (GMT+7)";
+    serverName = mode: "${mode} The Hometown of rs.falcon - Novosibirsk (GMT+7)";
     ports = {
       game = {
         d2dmp = 37825;
@@ -142,16 +142,14 @@ in {
       (cell.nixosTemplates.d2dmp.deathmatch {})
       {
         settings = {
-          sv_name = lib.mkForce (name "DM");
+          sv_name = lib.mkForce (serverName "DM");
           sv_welcome = lib.mkForce "------> t.me/doom2d | doom2d.org <-------";
           sv_port = lib.mkForce ports.game.d2dmp;
         };
       }
     ];
 
-    services.d2df = let
-      name = mode: "Novosibirsk ${mode}";
-    in {
+    services.d2df = {
       enable = true;
 
       servers = let
@@ -160,7 +158,7 @@ in {
         classic = (
           template.classic
           {
-            name = name "DM";
+            name = serverName "DM";
             port = ports.game.d2df.dm;
             ping = true;
             rcon = {
@@ -176,7 +174,7 @@ in {
         coop = (
           template.coop
           {
-            name = name "COOP";
+            name = serverName "COOP";
             port = ports.game.d2df.coop;
             rcon = {
               enable = false;
