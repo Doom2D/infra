@@ -25,7 +25,7 @@ in {
     instanceIp = "10.10.66.10";
     timeZone = "America/New_York";
     hostName = "cheaupsa";
-    serverName = mode: "${mode} Doom2D State Of Mind - New York (GMT-5)";
+    serverName = mode: "Doom2D State Of Mind - New York (GMT-5, ${mode})";
     ports = {
       game = {
         d2dmp = port 10;
@@ -74,7 +74,7 @@ in {
         coop = (
           template.coop
           {
-            name = serverName "Cooperative";
+            name = serverName "COOP";
             port = ports.game.d2df.coop;
             rcon = {
               enable = false;

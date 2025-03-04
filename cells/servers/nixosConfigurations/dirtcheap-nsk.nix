@@ -29,7 +29,7 @@ in {
     interface = "ens3";
     timeZone = "Asia/Novosibirsk";
     hostName = "cheapnsk";
-    serverName = mode: "${mode} The Hometown of rs.falcon - Novosibirsk (GMT+7)";
+    serverName = mode: "The Hometown of rs.falcon - Novosibirsk (GMT+7, ${mode})";
     ports = {
       game = {
         d2dmp = 37825;
