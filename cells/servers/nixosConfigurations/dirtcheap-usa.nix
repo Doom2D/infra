@@ -25,6 +25,20 @@ in {
     instanceIp = "10.10.66.10";
     timeZone = "America/New_York";
     hostName = "cheaupsa";
+    serverName = mode: "${mode} Doom2D State Of Mind - New York (GMT-5)";
+    ports = {
+      game = {
+        d2dmp = port 10;
+        d2df = {
+          dm = port 4;
+          coop = port 15;
+        };
+      };
+      master = {
+        d2dmp = 13;
+        d2df = 5;
+      };
+    };
   in {
     inherit (cell) bee;
 
@@ -33,12 +47,10 @@ in {
     networking.hostName = hostName;
     deployment.openvz.ip = instanceIp;
 
-    services.d2dfMasterServer.port = port 0;
-    services.d2dmpMasterServer.port = port 1;
+    services.d2dfMasterServer.port = ports.master.d2df;
+    services.d2dmpMasterServer.port = ports.master.d2dmp;
 
-    services.d2df = let
-      name = mode: "New York ${mode}";
-    in {
+    services.d2df = {
       enable = true;
 
       servers = let
@@ -47,8 +59,8 @@ in {
         classic = (
           template.classic
           {
-            name = name "DM";
-            port = port 2;
+            name = serverName "DM";
+            port = ports.game.d2df.dm;
             rcon = {
               enable = false;
             };
@@ -62,8 +74,8 @@ in {
         coop = (
           template.coop
           {
-            name = name "Cooperative";
-            port = port 3;
+            name = serverName "Cooperative";
+            port = ports.game.d2df.coop;
             rcon = {
               enable = false;
             };

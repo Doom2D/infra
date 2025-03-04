@@ -23,14 +23,25 @@ in {
     (modulesPath + "/profiles/qemu-guest.nix")
   ];
   config = let
-    port = natPort natStart natPortsCount;
-    natStart = 1000;
-    natPortsCount = 20;
     ip = "193.233.84.243";
     gateway = "193.233.84.1";
     interface = "ens3";
     timeZone = "Asia/Novosibirsk";
     hostName = "cheapnsk";
+    name = mode: "${mode} The Hometown of rs.falcon - Novosibirsk (GMT+7)";
+    ports = {
+      game = {
+        d2dmp = 37825;
+        d2df = {
+          dm = 59260;
+          coop = 6242;
+        };
+      };
+      master = {
+        d2dmp = 23180;
+        d2df = 16431;
+      };
+    };
     machineId = "";
   in {
     inherit (cell) bee;
@@ -122,16 +133,16 @@ in {
       };
     };
 
-    services.d2dfMasterServer.port = port 0;
-    services.d2dmpMasterServer.port = port 1;
+    services.d2dfMasterServer.port = ports.master.d2df;
+    services.d2dmpMasterServer.port = ports.master.d2dmp;
 
     services.d2dmp = lib.mkMerge [
       (cell.nixosTemplates.d2dmp.deathmatch {})
       {
         settings = {
-          sv_name = lib.mkForce "Novosibirsk DM";
+          sv_name = lib.mkForce (name "DM");
           sv_welcome = lib.mkForce "------> t.me/doom2d | doom2d.org <-------";
-          sv_port = lib.mkForce 14931;
+          sv_port = lib.mkForce ports.game.d2dmp;
         };
       }
     ];
@@ -148,7 +159,7 @@ in {
           template.classic
           {
             name = name "DM";
-            port = port 2;
+            port = ports.game.d2df.dm;
             ping = true;
             rcon = {
               enable = false;
@@ -163,8 +174,8 @@ in {
         coop = (
           template.coop
           {
-            name = name "Cooperative";
-            port = port 3;
+            name = name "COOP";
+            port = ports.game.d2df.coop;
             rcon = {
               enable = false;
             };
