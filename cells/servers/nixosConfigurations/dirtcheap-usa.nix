@@ -35,8 +35,8 @@ in {
         };
       };
       master = {
-        d2dmp = 13;
-        d2df = 5;
+        d2dmp = port 13;
+        d2df = port 5;
       };
     };
   in {
