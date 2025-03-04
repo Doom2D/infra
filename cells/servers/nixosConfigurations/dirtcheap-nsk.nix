@@ -4,6 +4,7 @@
 }: {
   lib,
   modulesPath,
+  pkgs,
   ...
 }: let
   tags = cell.nixosTags;
@@ -54,6 +55,7 @@ in {
       networkSetupType = "manual";
     };
 
+    environment.systemPackages = [pkgs.compsize];
     users.users.root.initialPassword = lib.mkForce "test";
     boot.loader.grub.enable = true;
     boot.loader.efi.canTouchEfiVariables = false;
