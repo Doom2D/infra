@@ -14,6 +14,10 @@
     services.openssh = {
       enable = true;
       ports = [7022];
+      settings = {
+        PasswordAuthentication = false;
+        PubkeyAuthentication = true;
+      };
     };
   };
 }

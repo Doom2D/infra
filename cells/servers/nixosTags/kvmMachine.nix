@@ -131,7 +131,7 @@
         networkConfig.DHCP = "no";
         address = [
           # replace this address with the one assigned to your instance
-          "${cfg.interface}/24"
+          "${cfg.ip}/24"
         ];
         routes = [
           {

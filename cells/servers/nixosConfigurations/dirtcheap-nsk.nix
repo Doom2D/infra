@@ -2,9 +2,8 @@
   inputs,
   cell,
 }: {
-  config,
   lib,
-  pkgs,
+  modulesPath,
   ...
 }: let
   tags = cell.nixosTags;
@@ -18,13 +17,17 @@ in {
     tags.d2dmpMaster
     inputs.disko.nixosModules.disko
     inputs.d2df-flake.nixosModules.d2dfServer
+
+    # ~Very important if you want the VM to boot!~
+    (modulesPath + "/profiles/qemu-guest.nix")
   ];
   config = let
     port = natPort natStart natPortsCount;
     natStart = 1000;
     natPortsCount = 20;
-    instanceIp = "193.233.84.243";
+    ip = "193.233.84.243";
     gateway = "193.233.84.1";
+    interface = "ens3";
     timeZone = "Asia/Novosibirsk";
     hostName = "cheapnsk";
     machineId = "";
@@ -35,16 +38,34 @@ in {
     time.timeZone = timeZone;
     networking.hostName = hostName;
     deployment.kvm = {
-      ip = instanceIp;
-      inherit gateway;
-      interface = "ens3";
+      inherit ip gateway interface;
       networkSetupType = "manual";
     };
 
+    users.users.root.initialPassword = lib.mkForce "test";
     boot.loader.grub.enable = true;
     boot.loader.efi.canTouchEfiVariables = false;
     boot.loader.grub.efiInstallAsRemovable = false;
     boot.loader.grub.efiSupport = false;
+    boot.supportedFilesystems = {
+      zfs = lib.mkForce false;
+      btrfs = true;
+      vfat = true;
+    };
+    boot.initrd = {
+      systemd = {
+        enable = true;
+        dbus.enable = true;
+      };
+      services = {
+        lvm.enable = true;
+      };
+      compressor = "zstd";
+      compressorArgs = [
+        "-19"
+        "-T0"
+      ];
+    };
     disko = {
       enableConfig = true;
       devices = let
@@ -64,16 +85,17 @@ in {
                 };
                 root = {
                   size = "100%";
+                  priority = 2;
                   content = {
                     type = "btrfs";
-                    extraArgs = ["-f"]; # Override existing partition
+                    extraArgs = ["-f"];
                     subvolumes = {
                       "/rootfs" = {
-                        mountpoint = "/";
                         mountOptions = [
                           "compress-force=zstd:2"
                           "noatime"
                         ];
+                        mountpoint = "/";
                       };
                       "/nix" = {
                         mountOptions = [
@@ -87,7 +109,7 @@ in {
                           "compress-force=zstd:2"
                           "noatime"
                         ];
-                        mountpoint = "/nix";
+                        mountpoint = "/var";
                       };
                     };
                   };
