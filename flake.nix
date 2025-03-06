@@ -26,20 +26,22 @@
     };
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/release-24.11";
-    nixos-openvz = {
-      url = "github:zhaofengli/nixos-openvz";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/release-24.11";
     d2df-flake = {
       url = "github:Doom2D/flake.nix";
       inputs = {nixpkgs.follows = "nixpkgs";};
     };
 
+    chaotic.url = "github:chaotic-cx/nyx";
     nixos-anywhere = {
       url = "github:nix-community/nixos-anywhere/main";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.disko.follows = "nixpkgs";
+    };
+    nixos-openvz = {
+      url = "github:zhaofengli/nixos-openvz";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     disko = {
       url = "github:nix-community/disko/master";
