@@ -9,7 +9,7 @@ in {
       enable = true;
       swiftshaderD3d8Dll = ./d3d8.dll;
       wine = cell.bee.pkgs.wineWow64Packages.minimal.override {
-        wineRelease = "stable";
+        wineRelease = "staging";
         x11Support = true;
       };
       openFirewall = true;
