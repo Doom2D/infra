@@ -27,21 +27,10 @@ in {
         doom2df =
           (inputs.d2df-flake.legacyPackages.doom2df-base.override {
             Doom2D-Forever = inputs.d2df-flake.dfInputs.Doom2D-Forever;
-            disableIo = true;
-            withSDL2 = false;
             headless = true;
-            withOpenAL = false;
             disableSound = true;
             disableGraphics = true;
-            withOpenGL2 = false;
-            withHolmes = false;
-
-            withVorbis = false;
-            withLibXmp = false;
-            withMpg123 = false;
-            withOpus = false;
-            withMiniupnpc = false;
-            withFluidsynth = false;
+            disableIo = true;
           })
           .overrideAttrs (finalAttrs: prevAttrs: {
             dontFixup = false;
