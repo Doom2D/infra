@@ -44,8 +44,7 @@ in {
 
         sv_clalert = 0;
         sv_use_pwd = 0;
-        sv_passw = "pwd";
-        sv_lan = 0;
+        sv_lan = 1;
         sv_portcheck = 0;
         sv_ipbans = 1;
         sv_cycle_maps = 2;
