@@ -152,9 +152,13 @@ in {
       (cell.nixosTemplates.d2dmp.deathmatch {})
       {
         settings = {
-          sv_name = lib.mkForce ("Novosibirsk (GMT+7, DM)");
+          sv_name = lib.mkForce "Novosibirsk (GMT+7, DM)";
           sv_welcome = lib.mkForce "------> t.me/doom2d | doom2d.org <-------";
           sv_port = lib.mkForce ports.game.d2dmp;
+
+          # This is a weak server. Change settings accordingly
+          sv_rate = lib.mkForce 4;
+          sv_maxplayers = lib.mkForce 4;
         };
       }
     ];
