@@ -5,21 +5,8 @@
   lib = cell.bee.pkgs.lib;
 in {
   deathmatch = overrideAttrs @ {...}: let
-    serverAttrs = rec {
-      enable = true;
-      swiftshaderD3d8Dll = ./d3d8.dll;
-      wine = cell.bee.pkgs.wineWow64Packages.minimal.override {
-        wineRelease = "staging";
-        x11Support = true;
-      };
-      openFirewall = true;
-      autoexec = let
-        syncCvars = ["mp_itemrespawn" "mp_respawn_inv" "mp_itemdrop" "mp_respawn" "mp_weaponstay" "sv_sync_type" "sv_rate" "sv_dl_rate"];
-      in
-        # For some reason, sometimes game setting stop applying.
-        # Add the CVARs I noticed go out of sync into autoexec.cfg
-        lib.concatStringsSep "\n" (lib.map (cvar: let cvarValue = settings."${cvar}"; in "${cvar} ${builtins.toString cvarValue}") syncCvars);
-      settings = {
+    serverAttrs = let
+      base = {
         sv_map = "dm_superdm";
         sv_name = "Doom2D Multiplayer";
         sv_port = 18512;
@@ -88,7 +75,23 @@ in {
         bot_userate = 32;
         bot_cowardly = 0;
       };
+      settings = lib.recursiveUpdate base overrideAttrs;
+    in {
+      enable = true;
+      swiftshaderD3d8Dll = ./d3d8.dll;
+      wine = cell.bee.pkgs.wineWow64Packages.minimal.override {
+        wineRelease = "staging";
+        x11Support = true;
+      };
+      openFirewall = true;
+      autoexec = let
+        syncCvars = ["mp_itemrespawn" "mp_respawn_inv" "mp_itemdrop" "mp_respawn" "mp_weaponstay" "sv_sync_type" "sv_rate" "sv_dl_rate"];
+      in
+        # For some reason, sometimes game setting stop applying.
+        # Add the CVARs I noticed go out of sync into autoexec.cfg
+        lib.concatStringsSep "\n" (lib.map (cvar: let cvarValue = settings."${cvar}"; in "${cvar} ${builtins.toString cvarValue}") syncCvars);
+      inherit settings;
     };
   in
-    lib.mkMerge [serverAttrs overrideAttrs];
+    serverAttrs;
 }

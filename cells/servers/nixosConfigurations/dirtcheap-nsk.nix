@@ -148,20 +148,15 @@ in {
     services.d2dfMasterServer.port = ports.master.d2df;
     services.d2dmpMasterServer.port = ports.master.d2dmp;
 
-    services.d2dmp = lib.mkMerge [
-      (cell.nixosTemplates.d2dmp.deathmatch {})
-      {
-        settings = {
-          sv_name = lib.mkForce "Novosibirsk (GMT+7, DM)";
-          sv_welcome = lib.mkForce "------> t.me/doom2d | doom2d.org <-------";
-          sv_port = lib.mkForce ports.game.d2dmp;
+    services.d2dmp = cell.nixosTemplates.d2dmp.deathmatch {
+      sv_name = "Novosibirsk (GMT+7, DM)";
+      sv_welcome = "------> t.me/doom2d | doom2d.org <-------";
+      sv_port = ports.game.d2dmp;
 
-          # This is a weak server. Change settings accordingly
-          sv_rate = lib.mkForce 4;
-          sv_maxplayers = lib.mkForce 4;
-        };
-      }
-    ];
+      # This is a weak server. Change settings accordingly
+      sv_rate = 4;
+      sv_maxplayers = 4;
+    };
 
     services.d2df = {
       enable = true;
