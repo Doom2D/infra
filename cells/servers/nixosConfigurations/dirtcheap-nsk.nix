@@ -61,6 +61,16 @@ in {
     boot.loader.efi.canTouchEfiVariables = false;
     boot.loader.grub.efiInstallAsRemovable = false;
     boot.loader.grub.efiSupport = false;
+    # These are really for a "gamer" PC, but maybe it will help a CPU starved machine with latency
+    boot.kernelParams = [
+      "mitigations=off"
+      "workqueue.power_efficient=false"
+      "skew_tick=1"
+      "threadirqs"
+      "preempt=full"
+    ];
+    # A "gamer" kernel with better defaults and latest version
+    boot.kernelPackages = inputs.chaotic.legacyPackages.linuxPackages_cachyos-server;
     boot.supportedFilesystems = {
       zfs = lib.mkForce false;
       btrfs = true;
@@ -142,7 +152,7 @@ in {
       (cell.nixosTemplates.d2dmp.deathmatch {})
       {
         settings = {
-          sv_name = lib.mkForce (serverName "DM");
+          sv_name = lib.mkForce ("Novosibirsk (GMT+7, DM)");
           sv_welcome = lib.mkForce "------> t.me/doom2d | doom2d.org <-------";
           sv_port = lib.mkForce ports.game.d2dmp;
         };
