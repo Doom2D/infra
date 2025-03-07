@@ -44,3 +44,32 @@ nixos-anywhere --no-substitute-on-destination -L --debug --build-on local --flak
 # Deploy
 nix run github:zhaofengli/colmena#colmena -- apply --on servers-dirtcheap-nsk --impure
 ```
+
+## Moscow
+
+```ssh
+# Choose any image at firstbyte's
+# Power down the VM in the vm manager.
+# In the iso images, download nixos-minimal.
+# Add nixos-minimal iso to VM boot order.
+# When nixos booted, configure the network.
+systemctl stop dhcpcd
+ip a flush dev ens3
+ip a add IP/24 dev ens3
+ip route add default via GATEWAY dev ens3
+# Create a zram device.
+modprobe zram
+zramctl /dev/zram0 --algorithm zstd --size 500M
+mkswap -U clear /dev/zram0
+swapon --discard --priority 100 /dev/zram0
+# First iteration. This ise expected to fail.
+nixos-anywhere --no-substitute-on-destination -L --debug --build-on local --flake .#servers-msk root@IP
+# The install will fail due to lack of space.
+# SSH into the VPS, and remount the overlay.
+mount -o remount,size=800M /nix/.rw-store
+# Proceed with the install.
+nixos-anywhere --no-substitute-on-destination -L --debug --build-on local --flake .#servers-msk root@IP
+# Stop the VPS from control panel when install is finished.
+# Remove ISO image from boot order.
+# Start the VPS.
+```
