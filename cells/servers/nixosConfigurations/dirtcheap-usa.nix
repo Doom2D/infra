@@ -14,8 +14,8 @@ in {
     tags.disableDocumentation
     tags.openvzContainer
     tags.ssh
-    tags.d2dfMaster
-    tags.d2dmpMaster
+    inputs.cells.d2df.nixosTags.d2dfMaster
+    inputs.cells.d2dmp.nixosTags.d2dmpMaster
     inputs.d2df-flake.nixosModules.d2dfServer
   ];
   config = let
@@ -54,7 +54,10 @@ in {
       enable = true;
 
       servers = let
-        template = cell.nixosTemplates.d2df;
+        template = inputs.cells.d2df.nixosTemplates.d2df {
+          inherit pkgs;
+          inherit (pkgs) lib;
+        };
       in {
         classic = (
           template.classic

@@ -1,9 +1,10 @@
 {
   inputs,
   cell,
-}: let
-  lib = cell.bee.pkgs.lib;
-in {
+}: {
+  pkgs,
+  lib,
+}: {
   deathmatch = overrideAttrs @ {...}: let
     serverAttrs = let
       base = {
@@ -79,7 +80,7 @@ in {
     in {
       enable = true;
       swiftshaderD3d8Dll = ./d3d8.dll;
-      wine = cell.bee.pkgs.wineWow64Packages.minimal.override {
+      wine = pkgs.wineWow64Packages.minimal.override {
         wineRelease = "staging";
         x11Support = true;
       };

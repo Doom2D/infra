@@ -1,9 +1,10 @@
 {
   inputs,
   cell,
+}: {
+  lib,
+  pkgs,
 }: let
-  lib = cell.bee.pkgs.lib;
-  pkgs = cell.bee.pkgs;
   rawDmJson = ./d2df_dm.json;
   rawPubgJson = pkgs.writeText "maps.json" ''
     [

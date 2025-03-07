@@ -14,8 +14,8 @@ in {
     tags.disableDocumentation
     tags.kvmMachine
     tags.ssh
-    tags.d2dfMaster
-    tags.d2dmpMaster
+    inputs.cells.d2df.nixosTags.d2dfMaster
+    inputs.cells.d2dmp.nixosTags.d2dmpMaster
     inputs.disko.nixosModules.disko
     inputs.d2df-flake.nixosModules.d2dfServer
     inputs.d2df-flake.nixosModules.d2dmpServer
@@ -148,21 +148,29 @@ in {
     services.d2dfMasterServer.port = ports.master.d2df;
     services.d2dmpMasterServer.port = ports.master.d2dmp;
 
-    services.d2dmp = cell.nixosTemplates.d2dmp.deathmatch {
-      sv_name = "Novosibirsk (GMT+7, DM)";
-      sv_welcome = "------> t.me/doom2d | doom2d.org <-------";
-      sv_port = ports.game.d2dmp;
+    services.d2dmp =
+      (inputs.cells.d2dmp.nixosTemplates.d2dmp {
+        inherit pkgs;
+        inherit (pkgs) lib;
+      })
+      .deathmatch {
+        sv_name = "Novosibirsk (GMT+7, DM)";
+        sv_welcome = "------> t.me/doom2d | doom2d.org <-------";
+        sv_port = ports.game.d2dmp;
 
-      # This is a weak server. Change settings accordingly
-      sv_rate = 4;
-      sv_maxplayers = 4;
-    };
+        # This is a weak server. Change settings accordingly
+        sv_rate = 4;
+        sv_maxplayers = 4;
+      };
 
     services.d2df = {
       enable = true;
 
       servers = let
-        template = cell.nixosTemplates.d2df;
+        template = inputs.cells.d2df.nixosTemplates.d2df {
+          inherit pkgs;
+          inherit (pkgs) lib;
+        };
       in {
         classic = (
           template.classic
