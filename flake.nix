@@ -16,6 +16,7 @@
         (functions "bee")
         (functions "nixosTemplates")
         (functions "nixosTags")
+        (functions "diskoTags")
         nixosConfigurations
         colmenaConfigurations
       ];

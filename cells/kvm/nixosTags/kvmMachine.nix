@@ -5,9 +5,12 @@
   config,
   lib,
   pkgs,
+  modulesPath,
   ...
 }: {
   imports = [
+    # ~Very important if you want the VM to boot!~
+    (modulesPath + "/profiles/qemu-guest.nix")
   ];
   options = {
     deployment.kvm = {
@@ -39,7 +42,6 @@
   };
   config = let
     cfg = config.deployment.kvm;
-    instanceIp = cfg.ip;
     isDhcp = cfg.networkSetupType == "dhcp";
     isManualSetup = cfg.networkSetupType == "manual";
   in
@@ -67,50 +69,6 @@
       networking.iproute2 = {
         enable = true;
       };
-
-      boot.kernelModules = ["tcp_bbr" "sch_netem"];
-      boot.kernel.sysctl = let
-        severalValues = arr: lib.concatStringsSep " " (lib.map builtins.toString arr);
-        forwardIp = 0;
-      in
-        lib.recursiveUpdate {
-          "net.core.default_qdisc" = "fq";
-          "net.ipv4.tcp_congestion_control" = "bbr";
-        } {
-          # TODO
-          # Decide whether ip forward is needed
-          "net.ipv4.ip_forward" = forwardIp;
-          "net.ipv4.conf.all.forwarding" = forwardIp;
-          "net.ipv6.conf.all.forwarding" = forwardIp;
-          "net.ipv6.conf.all.accept_ra" = 0;
-          "net.ipv6.conf.all.accept_redirects" = 0;
-          "net.ipv6.conf.all.accept_source_route" = 0;
-          # Haaax
-          "net.core.netdev_max_backlog" = 16 * 1024; # 16 KB
-          "net.core.rmem_default" = 1 * 1024 * 1024; # 1 MB
-          "net.core.rmem_max" = 16 * 1024 * 1024; # 16 MB
-          "net.core.wmem_default" = 1 * 1024 * 1024; # 1 MB
-          "net.core.wmem_max" = 16 * 1024 * 1024; # 16 MB
-          "net.core.optmem_max" = 64 * 1024; # 1 KB
-          "net.ipv4.tcp_rmem" = severalValues [(4 * 1024) (1 * 1024 * 1024) (2 * 1024 * 1024)]; #  4KB 1MB 2 MB
-          "net.ipv4.tcp_wmem" = severalValues [(4 * 1024) (64 * 1024) (16 * 1024 * 1024)]; #  4KB 64KB 16MB;
-          "net.ipv4.udp_rmem_min" = 8 * 1024; # 8 KB
-          "net.ipv4.udp_wmem_min" = 8 * 1024; # 8 KB
-          # enable all listeners to support Fast Open by default without explicit TCP_FASTOPEN socket option: 0x1 + 0x2 + 0x400
-          "net.ipv4.tcp_fastopen" = 1027;
-          "net.ipv4.tcp_max_syn_backlog" = 8192;
-          "net.ipv4.tcp_max_tw_buckets" = 2000000;
-          "net.ipv4.tcp_tw_reuse" = 1;
-          "net.ipv4.tcp_fin_timeout" = 10;
-          "net.ipv4.tcp_slow_start_after_idle" = 0;
-          "net.ipv4.tcp_keepalive_time" = 60;
-          "net.ipv4.tcp_keepalive_intvl" = 10;
-          "net.ipv4.tcp_keepalive_probes" = 6;
-          "net.ipv4.tcp_mtu_probing" = 1;
-          # For high latency networks
-          # net.ipv4.tcp_sack = 1;
-          "net.ipv4.tcp_rfc1337" = 1;
-        };
 
       networking.nameservers = ["1.1.1.1" "8.8.8.8"];
       services.resolved = {
