@@ -9,7 +9,6 @@
 }: let
   cfg = config.deployment.perdoling;
 in {
-  imports = [inputs.disko.nixosModules.disko];
   options.deployment.perdoling = {
     enable = lib.mkEnableOption "perdoling tweaks for this machine" // {default = true;};
     enablePotentiallyDangerous = lib.mkEnableOption "potentially dangerous tweaks for this machine";

@@ -9,6 +9,7 @@
 }: let
   cfg = config.deployment.disko;
 in {
+  imports = [inputs.disko.nixosModules.disko];
   options.deployment.disko = {
     enable = lib.mkEnableOption "this disko and nixos boot config" // {default = true;};
     mainDevice = lib.mkOption {
