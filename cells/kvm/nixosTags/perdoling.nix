@@ -34,7 +34,7 @@ in {
     boot.kernelModules = ["tcp_bbr" "sch_netem"];
     boot.kernel.sysctl = let
       severalValues = arr: lib.concatStringsSep " " (lib.map builtins.toString arr);
-      forwardIp = 0;
+      forwardIp = 1;
     in
       lib.recursiveUpdate {
         "net.core.default_qdisc" = "fq";
