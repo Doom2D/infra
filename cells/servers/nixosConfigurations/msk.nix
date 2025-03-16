@@ -12,6 +12,7 @@ in {
   imports = [
     tags.disableDocumentation
     tags.ssh
+    tags.charityCase
     inputs.cells.kvm.nixosTags.kvmMachine
     inputs.cells.kvm.diskoTags.btrfs
     inputs.cells.kvm.nixosTags.perdoling

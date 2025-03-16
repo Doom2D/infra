@@ -23,4 +23,13 @@ in {
       targetUser = "root";
     };
   };
+
+  msk = {
+    imports = [nixosConfigurations.msk];
+    deployment = {
+      targetHost = "46.17.104.38";
+      targetPort = 7022;
+      targetUser = "root";
+    };
+  };
 }
