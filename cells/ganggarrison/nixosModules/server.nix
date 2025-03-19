@@ -8,8 +8,8 @@
   usageLimitAttrs = {
     CPUAccounting = true;
     MemoryAccounting = true;
-    MemoryHigh = 92 * 1024 * 1024;
-    MemoryMax = 150 * 1024 * 1024;
+    MemoryHigh = 128 * 1024 * 1024;
+    MemoryMax = 172 * 1024 * 1024;
     TasksAccounting = true;
     IOAccounting = true;
   };
