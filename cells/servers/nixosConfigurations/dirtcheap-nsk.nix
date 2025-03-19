@@ -19,6 +19,7 @@ in {
     inputs.cells.d2dmp.nixosTags.d2dmpMaster
     inputs.d2df-flake.nixosModules.d2dfServer
     inputs.d2df-flake.nixosModules.d2dmpServer
+    inputs.cells.ganggarrison.nixosModules.server
   ];
   config = let
     ip = "193.233.84.243";
@@ -57,6 +58,13 @@ in {
     users.users.root.initialPassword = lib.mkForce "test";
     services.d2dfMasterServer.port = ports.master.d2df;
     services.d2dmpMasterServer.port = ports.master.d2dmp;
+
+    services.gg2 = (inputs.cells.ganggarrison.nixosTemplates.vanilla {inherit pkgs lib;}).deathmatch {
+      port = 8190;
+      hostPlayerName = "www.Doom2D.org";
+      serverName = "RussoAsia - GMT+7, NVS";
+      welcomeMessage = "Welcome! Also check out this awesome DOOM-inspired platformer! ---> doom2d.org <---";
+    };
 
     services.d2dmp =
       (inputs.cells.d2dmp.nixosTemplates.d2dmp {
