@@ -17,6 +17,8 @@
         (functions "nixosTemplates")
         (functions "nixosTags")
         (functions "diskoTags")
+        (functions "nixosModules")
+        (installables "packages")
         nixosConfigurations
         colmenaConfigurations
       ];

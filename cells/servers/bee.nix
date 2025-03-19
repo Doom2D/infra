@@ -21,6 +21,7 @@ in {
       permittedInsecurePackages = [
         "python-2.7.18.8"
       ];
+      allowUnfree = true;
     };
     overlays = [
       (final: prev: {
