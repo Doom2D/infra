@@ -1,6 +1,27 @@
 # About
 This is a Nix flake for managing Doom2D related deployments.
 
+# Mini HOWTO
+## Update dependencies
+```sh
+nix flake update
+```
+
+## Check that configuration builds
+```sh
+# or dirtcheap-servers-nsk or dirtcheap-servers-usa
+nix build .#nixosConfigurations.servers-msk.config.system.build.toplevel --verbose --show-trace
+```
+
+## Apply new configuration to host
+```sh
+# Make sure server has your SSH public key
+# Make sure your SSH private key is in your ssh-agent
+nix run github:zhaofengli/colmena#colmena -- apply --on servers-dirtcheap-nsk  --impure
+nix run github:zhaofengli/colmena#colmena -- apply --on servers-dirtcheap-usa  --impure
+nix run github:zhaofengli/colmena#colmena -- apply --on servers-msk  --impure
+```
+
 # Install instructions
 ## New York (Gullo's)
 
