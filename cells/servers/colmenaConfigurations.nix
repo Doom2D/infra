@@ -32,4 +32,13 @@ in {
       targetUser = "root";
     };
   };
+
+  kemerovo = {
+    imports = [nixosConfigurations.kemerovo];
+    deployment = {
+      targetHost = "2.59.161.80";
+      targetPort = 7022;
+      targetUser = "root";
+    };
+  };
 }
