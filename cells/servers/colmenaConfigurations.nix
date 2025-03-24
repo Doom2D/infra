@@ -41,4 +41,13 @@ in {
       targetUser = "root";
     };
   };
+
+  nl = {
+    imports = [nixosConfigurations.nl];
+    deployment = {
+      targetHost = "31.15.17.70";
+      targetPort = 7022;
+      targetUser = "root";
+    };
+  };
 }
