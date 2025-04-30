@@ -46,13 +46,6 @@
     isManualSetup = cfg.networkSetupType == "manual";
   in
     lib.mkIf cfg.enable {
-      zramSwap = {
-        enable = true;
-        algorithm = "zstd";
-        memoryPercent = 100 / config.zramSwap.swapDevices;
-        swapDevices = 1;
-      };
-
       networking.firewall = {
         enable = true;
         allowPing = false;

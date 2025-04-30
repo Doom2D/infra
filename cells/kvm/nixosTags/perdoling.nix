@@ -28,9 +28,13 @@ in {
         # Disable various mitigations
         "mitigations=off"
         "l1tf=off"
-        "kvm-intel.vmentry_l1d_flush=off"
+        "kvm-intel.vmentry_l1d_flush=never"
       ];
 
+    zramSwap = {
+      enable = true;
+      memoryPercent = 150;
+    };
     boot.kernelModules = ["tcp_bbr" "sch_netem"];
     boot.kernel.sysctl = let
       severalValues = arr: lib.concatStringsSep " " (lib.map builtins.toString arr);
@@ -39,6 +43,13 @@ in {
       lib.recursiveUpdate {
         "net.core.default_qdisc" = "fq";
         "net.ipv4.tcp_congestion_control" = "bbr";
+
+        # https://github.com/NixOS/nixpkgs/pull/351002
+        # https://github.com/NixOS/nixpkgs/issues/103106
+        "vm.swappiness" = 150;
+        "vm.watermark_boost_factor" = 0;
+        "vm.watermark_scale_factor" = 125;
+        "vm.page-cluster" = 0;
       } {
         # TODO
         # Decide whether ip forward is needed
@@ -60,7 +71,8 @@ in {
         "net.ipv4.udp_rmem_min" = 8 * 1024; # 8 KB
         "net.ipv4.udp_wmem_min" = 8 * 1024; # 8 KB
         # enable all listeners to support Fast Open by default without explicit TCP_FASTOPEN socket option: 0x1 + 0x2 + 0x400
-        "net.ipv4.tcp_fastopen" = 1027;
+        # Disabled for now, because its usefulness is uncertain
+        #"net.ipv4.tcp_fastopen" = 1027;
         "net.ipv4.tcp_max_syn_backlog" = 8192;
         "net.ipv4.tcp_max_tw_buckets" = 2000000;
         "net.ipv4.tcp_tw_reuse" = 1;
@@ -71,8 +83,8 @@ in {
         "net.ipv4.tcp_keepalive_probes" = 6;
         "net.ipv4.tcp_mtu_probing" = 1;
         # For high latency networks
-        # net.ipv4.tcp_sack = 1;
-        "net.ipv4.tcp_rfc1337" = 1;
+        # "net.ipv4.tcp_sack" = 1;
+        # "net.ipv4.tcp_rfc1337" = 1;
       };
 
     # A "gamer" kernel with better defaults and latest version
