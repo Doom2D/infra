@@ -100,12 +100,12 @@
   commonSettings = {
     p1_name = "Приколист";
     p2_name = "Приколист";
-    net_master_list = ["mpms.doom2d.org:25665" "terminalcorner.ru:25665"];
+    net_master_list = ["dfms.doom2d.org:25665" "dfms2.doom2d.org:25665" "terminalcorner.ru:25665"];
 
     g_max_bots = 24;
     g_spawn_invul = 1;
     g_weaponstay = 1;
-    sv_intertime = 15;
+    sv_intertime = 7;
     g_timelimit = 15 * 60;
     g_scorelimit = 0;
     g_maxlives = 0;
@@ -145,9 +145,6 @@
     rdl_hashdb_save_enabled = 1;
     rdl_ignore_enabled = 1;
     rdl_ignore_names = "standart;shrshade";
-    # TODO see if these values should be changed
-    sv_reliable_interval = 70;
-    sv_update_interval = 2;
     cl_downloadtimeout = 60;
     cl_predictself = 0;
     cl_forceplayerupdate = 0;
@@ -221,6 +218,8 @@ in {
         // commonSettings
         // {
           sv_master_interval = 27 * 1000;
+          g_timelimit = builtins.ceil (6.5 * 60);
+          g_scorelimit = 35;
         };
 
       execStart = commonExecStart;
