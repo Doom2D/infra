@@ -75,10 +75,6 @@ in {
         sv_name = "Netherlands";
         sv_welcome = "------> t.me/doom2d | doom2d.org <-------";
         sv_port = ports.game.d2dmp;
-
-        # This is a weak server. Change settings accordingly
-        #sv_rate = 4;
-        #sv_maxplayers = 4;
       };
 
     services.d2df = {
