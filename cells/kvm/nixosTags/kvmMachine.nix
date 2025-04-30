@@ -72,6 +72,8 @@
         dnsovertls = "false";
       };
 
+      boot.kernelPackages = pkgs.linuxPackages;
+
       networking.firewall.trustedInterfaces = [cfg.interface];
       networking.networkmanager.enable = false;
       networking.useDHCP = isDhcp;

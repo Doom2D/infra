@@ -21,7 +21,6 @@ in {
         "workqueue.power_efficient=false"
         "skew_tick=1"
         "threadirqs"
-        "preempt=full"
         "smt=on"
       ]
       ++ lib.optionals cfg.enablePotentiallyDangerous [
@@ -86,8 +85,5 @@ in {
         # "net.ipv4.tcp_sack" = 1;
         # "net.ipv4.tcp_rfc1337" = 1;
       };
-
-    # A "gamer" kernel with better defaults and latest version
-    boot.kernelPackages = inputs.chaotic.legacyPackages.linuxPackages_cachyos-server;
   };
 }
