@@ -94,3 +94,11 @@ nixos-anywhere --no-substitute-on-destination -L --debug --build-on local --flak
 # Remove ISO image from boot order.
 # Start the VPS.
 ```
+
+## Netherlands
+
+Same as 4vps.
+
+## Germany
+
+Same as 4vps.
