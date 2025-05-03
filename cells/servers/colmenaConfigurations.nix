@@ -50,4 +50,13 @@ in {
       targetUser = "root";
     };
   };
+
+  germany = {
+    imports = [nixosConfigurations.germany];
+    deployment = {
+      targetHost = "193.23.197.194";
+      targetPort = 7022;
+      targetUser = "root";
+    };
+  };
 }
