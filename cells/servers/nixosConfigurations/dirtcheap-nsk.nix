@@ -22,8 +22,8 @@ in {
     inputs.cells.ganggarrison.nixosModules.server
   ];
   config = let
-    ip = "193.233.84.243";
-    gateway = "193.233.84.1";
+    ip = "178.250.186.116";
+    gateway = "178.250.186.1";
     interface = "ens3";
     timeZone = "Asia/Novosibirsk";
     hostName = "cheapnsk";
