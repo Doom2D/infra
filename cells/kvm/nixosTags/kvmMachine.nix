@@ -21,6 +21,13 @@
           IP address assigned to this instance.
         '';
       };
+      ipMask = lib.mkOption {
+        type = lib.types.str;
+        default = "24";
+        description = ''
+          IP mask assigned to this instance.
+        '';
+      };
       interface = lib.mkOption {
         type = lib.types.str;
         description = ''
@@ -74,17 +81,17 @@
 
       boot.kernelPackages = pkgs.linuxPackages;
 
-      networking.firewall.trustedInterfaces = [cfg.interface];
+      networking.firewall.trustedInterfaces = lib.mkIf isManualSetup [cfg.interface];
       networking.networkmanager.enable = false;
       networking.useDHCP = isDhcp;
       networking.dhcpcd.enable = isDhcp;
       systemd.network.enable = isManualSetup;
-      systemd.network.networks."30-manual-setup" = {
+      systemd.network.networks."30-manual-setup" = lib.mkIf isManualSetup {
         matchConfig.Name = cfg.interface;
         networkConfig.DHCP = "no";
         address = [
           # replace this address with the one assigned to your instance
-          "${cfg.ip}/24"
+          "${cfg.ip}/${cfg.ipMask}"
         ];
         routes = [
           {
