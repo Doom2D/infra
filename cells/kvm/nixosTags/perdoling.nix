@@ -17,7 +17,6 @@ in {
     # These are really for a "gamer" PC, but maybe it will help a CPU starved machine with latency
     boot.kernelParams =
       [
-        "mitigations=off"
         "workqueue.power_efficient=false"
         "skew_tick=1"
         "threadirqs"
