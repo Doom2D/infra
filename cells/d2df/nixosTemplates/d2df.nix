@@ -100,7 +100,7 @@
   commonSettings = {
     p1_name = "Приколист";
     p2_name = "Приколист";
-    net_master_list = ["dfms.doom2d.org:25665" "dfms2.doom2d.org:25665" "terminalcorner.ru:25665"];
+    net_master_list = ["dfms.doom2d.org:25665" "dfms2.doom2d.org:1005"];
 
     g_max_bots = 24;
     g_spawn_invul = 1;
