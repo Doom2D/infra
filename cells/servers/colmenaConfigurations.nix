@@ -18,7 +18,7 @@ in {
     imports = [nixosConfigurations.dirtcheap-nsk];
 
     deployment = {
-      targetHost = "193.233.84.243";
+      targetHost = "178.250.186.116";
       targetPort = 7022;
       targetUser = "root";
     };
