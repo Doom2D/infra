@@ -50,6 +50,7 @@
   group = "gg2";
   abbr = "gg2";
   name = "deathmatch";
+  rotationFileName = "rotation.txt";
 
   serverServiceName = "${abbr}-${name}";
   xdummyServiceName = "${abbr}-xdummy";
@@ -67,6 +68,13 @@ in {
       type = lib.types.path;
       description = ''
         Swiftshader software render d3d8 dll.
+      '';
+    };
+    rotationFile = lib.mkOption {
+      type = lib.types.nullOr lib.types.path;
+      default = null;
+      description = ''
+        Map rotation text file.
       '';
     };
     openFirewall = (lib.mkEnableOption "opening ports on firewall for Gang Garrison 2 servers") // {default = true;};
@@ -204,9 +212,14 @@ in {
 
     printSettings = (pkgs.formats.ini {}).generate "gg2.ini";
     script = userDir: let
-      exe = "gg2.exe";
+      exe = "gg2_doom2dorg.exe";
       configFile = let
-        src = printSettings cfg.settings;
+        src = printSettings (cfg.settings
+          # If there is a rotation file, override user settings
+          // lib.optionalAttrs (!builtins.isNull cfg.rotationFile) {
+            "Server"."MapRotation" =
+              rotationFileName;
+          });
         converted = convertToWin1251 src;
       in
         converted;
@@ -239,6 +252,7 @@ in {
           cp ${dataPackage}/* "${userDir}" -r
           cp "${gameExecutable}" ${exe}
           cp "${cfg.swiftshaderD3d8Dll}" "${userDir}/d3d8.dll"
+          ${lib.optionalString (!builtins.isNull cfg.rotationFile) "cp ${cfg.rotationFile} ${userDir}/${rotationFileName}"}
           chmod 700 -R ${userDir}
         ''
         + ''

@@ -2,10 +2,11 @@
   lib,
   stdenvNoCC,
   fetchurl,
-  unzip,
-  fd,
+  rar,
+  findutils,
 }: let
-  baseName = "Gang.Garrison.2.v2.9.2";
+  tag = "Tag6";
+  name = "GG2.Host.rar";
 in
   stdenvNoCC.mkDerivation rec {
     pname = "gg2-data";
@@ -13,15 +14,17 @@ in
     dontUnpack = true;
 
     src = fetchurl {
-      url = "https://github.com/Doom2D/blobs_vault/releases/download/Tag5/${baseName}.zip";
-      sha256 = "sha256-X9oVzl9TkgyjX7NdWkbr+Lwxah2yWmx3aZqoT+rsIm4=";
+      url = "https://github.com/Doom2D/blobs_vault/releases/download/${tag}/${name}";
+      sha256 = "sha256-2hadQKirg9aSFulwoTZDYVvPUj1GHgT66M8jmOoedzs=";
     };
 
-    nativeBuildInputs = [unzip];
+    nativeBuildInputs = [rar findutils];
 
     installPhase = ''
       runHook preInstall
-      unzip -q ${src} -d $out
+      mkdir -p $out
+      rar x ${src} .
+      mv 'GG2 Host'/* $out
       runHook postInstall
     '';
 

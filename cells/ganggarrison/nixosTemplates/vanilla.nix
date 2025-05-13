@@ -17,7 +17,7 @@
         UseLobby = 1;
 
         Music = 1;
-        PlayerLimit = 18;
+        PlayerLimit = 24;
         MultiClientLimit = 3;
         Particles = 0;
         "Gib Level" = 3;
@@ -32,8 +32,8 @@
         "Kill Log Position" = 0;
         "KoTH HUD Position" = 0;
         "Fade Scoreboard" = 1;
-        ServerPluginsPrompt = 1;
-        RestartPrompt = 1;
+        ServerPluginsPrompt = 0;
+        RestartPrompt = 0;
         CrosshairFilename = "";
         CrosshairRemoveBG = 1;
         "Queued Jumping" = 0;
@@ -43,20 +43,20 @@
       };
 
       Server = {
-        MapRotation = "";
+        MapRotation = "Standard.txt";
         ShuffleRotation = 1;
         Dedicated = 1;
-        CapLimit = 4;
+        CapLimit = 3;
         "Deathmatch Kill Limit" = 30;
         "Team Deathmatch Invulnerability Seconds" = 5;
         AutoBalance = 1;
-        RespawnTime = 4;
+        RespawnTime = 5;
         "Total bandwidth limit for map downloads in bytes per second" = 50000;
-        "Time Limit" = 10;
+        "Time Limit" = 7;
         Password = "";
         AttemptUPnPForwarding = 0;
-        ServerPluginList = "";
-        ServerPluginsRequired = 0;
+        ServerPluginList = "chat";
+        ServerPluginsRequired = 1;
       };
 
       General = {
@@ -71,16 +71,16 @@
       };
 
       Classlimits = {
-        Scout = 255;
-        Pyro = 255;
-        Soldier = 255;
-        Heavy = 255;
-        Demoman = 255;
-        Medic = 255;
-        Engineer = 255;
-        Spy = 255;
-        Sniper = 255;
-        Quote = 255;
+        Scout = 2;
+        Pyro = 2;
+        Soldier = 2;
+        Heavy = 2;
+        Demoman = 2;
+        Medic = 1;
+        Engineer = 2;
+        Spy = 1;
+        Sniper = 2;
+        Quote = 2;
       };
 
       Maps = {
