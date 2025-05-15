@@ -218,7 +218,7 @@ in {
           # If there is a rotation file, override user settings
           // lib.optionalAttrs (!builtins.isNull cfg.rotationFile) {
             "Server"."MapRotation" =
-              rotationFileName;
+              "Standard.txt";
           });
         converted = convertToWin1251 src;
       in
@@ -252,7 +252,11 @@ in {
           cp ${dataPackage}/* "${userDir}" -r
           cp "${gameExecutable}" ${exe}
           cp "${cfg.swiftshaderD3d8Dll}" "${userDir}/d3d8.dll"
-          ${lib.optionalString (!builtins.isNull cfg.rotationFile) "cp ${cfg.rotationFile} ${userDir}/${rotationFileName}"}
+          ${lib.optionalString (!builtins.isNull cfg.rotationFile) ''
+            cp ${cfg.rotationFile} ${userDir}/${rotationFileName}
+            ${pkgs.dos2unix}/bin/unix2dos ${userDir}/${rotationFileName}
+          ''}
+
           chmod 700 -R ${userDir}
         ''
         + ''
