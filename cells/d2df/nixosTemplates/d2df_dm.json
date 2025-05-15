@@ -239,19 +239,7 @@
         ]
     },
     {
-        "source": "bible Black v2.wad",
-        "maps": [
-            "MAP01"
-        ]
-    },
-    {
         "source": "blocked2.wad",
-        "maps": [
-            "MAP01"
-        ]
-    },
-    {
-        "source": "Bloody Mess.wad",
         "maps": [
             "MAP01"
         ]
