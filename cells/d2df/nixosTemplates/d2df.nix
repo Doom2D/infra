@@ -206,7 +206,7 @@ in {
 
       bots = {
         enable = true;
-        count = 1;
+        count = 3;
         allowKick = true;
         fillEmptyPlayerSlots = false;
       };
