@@ -8,8 +8,8 @@
   usageLimitAttrs = {
     CPUAccounting = true;
     MemoryAccounting = true;
-    MemoryHigh = 128 * 1024 * 1024;
-    MemoryMax = 172 * 1024 * 1024;
+    MemoryHigh = 172 * 1024 * 1024;
+    MemoryMax = 256 * 1024 * 1024;
     TasksAccounting = true;
     IOAccounting = true;
   };
@@ -57,7 +57,7 @@
   dataPackage = cfg.dataPackage;
   gameExecutable = cfg.gameExecutable;
 
-  launchCmd = exe: "wine ${exe} -D2D_quiet";
+  launchCmd = exe: "wine ${exe} -high -headless";
 in {
   options.services.gg2 = {
     enable = (lib.mkEnableOption "Gang Garrison 2 servers") // {default = true;};
@@ -81,6 +81,13 @@ in {
     settings = lib.mkOption {
       description = ''
         Generates the `gg2.ini` file.
+      '';
+      default = {};
+      type = lib.types.attrs;
+    };
+    DSMSettings = lib.mkOption {
+      description = ''
+        Generates the `Re-DSM.ini` file.
       '';
       default = {};
       type = lib.types.attrs;
@@ -212,14 +219,20 @@ in {
 
     printSettings = (pkgs.formats.ini {}).generate "gg2.ini";
     script = userDir: let
-      exe = "gg2_doom2dorg.exe";
+      exe = "professional.exe";
       configFile = let
         src = printSettings (cfg.settings
           # If there is a rotation file, override user settings
           // lib.optionalAttrs (!builtins.isNull cfg.rotationFile) {
-            "Server"."MapRotation" =
-              "Standard.txt";
+            "Server"."MapRotation" = "Standard.txt";
           });
+        converted = convertToWin1251 src;
+      in
+        converted;
+      DSMConfigFile = let
+        src = printSettings (
+          cfg.DSMSettings
+        );
         converted = convertToWin1251 src;
       in
         converted;
@@ -256,16 +269,16 @@ in {
             cp ${cfg.rotationFile} ${userDir}/${rotationFileName}
             ${pkgs.dos2unix}/bin/unix2dos ${userDir}/${rotationFileName}
           ''}
-
-          chmod 700 -R ${userDir}
         ''
         + ''
+          cat "${DSMConfigFile}/str" > "${userDir}/Re-DSM.ini";
           cat "${configFile}/str" > "${userDir}/gg2.ini"
         ''
         # First, initialize the prefix. Unset DISPLAY so that WINE doesn't offer to install Mono and other things with a graphical dialog.
         # Then, disable showing crash dialog and kill wineserver.
         # Finally, try to launch the server.
         + ''
+          chmod 700 -R ${userDir}
           (
           unset DISPLAY;
           wineboot -i

@@ -124,5 +124,23 @@
         HostingPort = port;
       };
     };
+    DSMSettings = {
+      # This is added just in case, but should not be necessary
+      Hosting."Headless Mode (Launch Option Only)" = 1;
+
+      Audio."Master Volume" = 0;
+      Console = {
+        "Save Log" = 1;
+        "Output Window Rows" = 14;
+        "Window Opacity" = 75;
+        "Tab Autocomplete" = 1;
+        "Show Timestamps" = 1;
+        "Bold Font" = 1;
+      };
+      RCON = {
+        "Rcon Enabled" = 1;
+        "Save Rcon Users" = 1;
+      };
+    };
   };
 }

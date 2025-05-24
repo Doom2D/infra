@@ -5,24 +5,24 @@
   _7zz,
 }:
 stdenvNoCC.mkDerivation rec {
-  pname = "gg2-data";
-  version = "1.0";
+  pname = "gg2-re-DSM";
+  version = "2.0";
   dontUnpack = true;
   src = fetchurl {
-    url = "https://github.com/Doom2D/blobs_vault/releases/download/Tag4/gg2_doom2dorg.7z";
-    sha256 = "sha256-TRGSCKjjAQ40HPsqJfwQAKRfexLgt5cA6acmnyvxxAM=";
+    url = "https://github.com/Derpduck/Gang-Garrison-2/releases/download/Re-DSM-v2/Re-DSM.7z";
+    sha256 = "sha256-FiGLKMnnUzb26P/y5cJri4qXEeQRvi9dwz7w9dElPr4=";
   };
   nativeBuildInputs = [_7zz];
   installPhase = ''
     runHook preInstall
     mkdir -p tmp
     7zz x ${src} -otmp
-    mv tmp/gg2_doom2dorg.exe $out
+    mv tmp/Re-DSM.exe $out
     runHook postInstall
   '';
   meta = with lib; {
     homepage = "https://ganggarrison.com";
-    description = "Gang Garrison game data";
+    description = "Gang Garrison re-DSM executable";
     license = licenses.unfree;
     maintainers = [];
     platforms = platforms.all;
