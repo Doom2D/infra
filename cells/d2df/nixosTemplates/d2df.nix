@@ -173,6 +173,7 @@ in {
       enable = true;
       order = 2;
       package = defaultPackage;
+      assets = pkgs.doom2df-assets;
       maxPlayers = 24;
       gameMode = "coop";
 
@@ -201,6 +202,7 @@ in {
       enable = true;
       order = 1;
       package = defaultPackage;
+      assets = pkgs.doom2df-assets;
       maxPlayers = 24;
       gameMode = "dm";
 
@@ -232,6 +234,7 @@ in {
       enable = true;
       order = 2;
       package = defaultPackage;
+      assets = pkgs.doom2df-assets;
       maxPlayers = 24;
       gameMode = "pubg";
 
@@ -278,6 +281,7 @@ in {
       enable = true;
       order = 3;
       package = defaultPackage;
+      assets = pkgs.doom2df-assets;
       maxPlayers = 24;
       gameMode = "defrag";
 
@@ -312,6 +316,7 @@ in {
     serverAttrs = {
       enable = true;
       package = defaultPackage;
+      assets = pkgs.doom2df-assets;
       maxPlayers = 2;
       gameMode = "duel";
 
