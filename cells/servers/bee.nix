@@ -25,6 +25,27 @@ in {
     };
     overlays = [
       (final: prev: {
+        doom2df-assets = final.stdenv.mkDerivation (finalAttrs: {
+          pname = "doom2df-assets";
+          version = "unstable";
+          src = null;
+          base = inputs.d2df-flake.assets.defaultAssetsPath.override {
+            extraRoots = [];
+            withDates = false;
+            toLower = true;
+            unixLineEndings = true;
+          };
+          distrib = inputs.d2df-flake.dfInputs.d2df-distro-content;
+          nativeBuildInputs = [final._7zz final.rar];
+          dontUnpack = true;
+          installPhase = ''
+            runHook preInstall
+            mkdir -p $out
+            7zz x ${finalAttrs.base} -o$out
+            rar x ${finalAttrs.distrib} $out
+            runHook postInstall
+          '';
+        });
         doom2df =
           (inputs.d2df-flake.legacyPackages.doom2df-base.override {
             Doom2D-Forever = inputs.d2df-flake.dfInputs.Doom2D-Forever;
