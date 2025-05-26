@@ -591,12 +591,6 @@
         ]
     },
     {
-        "source": "kakaoDM.dfz",
-        "maps": [
-            "MAP01"
-        ]
-    },
-    {
         "source": "LIFT.wad",
         "maps": [
             "MAP01"
