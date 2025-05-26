@@ -19,13 +19,7 @@
   rawCoopJson = pkgs.writeText "coop.json" ''
     [
         {"source": "Bloodworks.wad", "entry": "MAP01"},
-        {"source": "dm99.dfz", "entry": "MAP01"},
-        {"source": "DM2002_DF_RC.1.wad", "entry": "MAP01"},
         {"source": "doom2d.wad", "entry": "MAP01"},
-        {"source": "DOOM2D.dfz", "entry": "MAP01"},
-        {"source": "FAIL.wad", "entry": "MAP01"},
-        {"source": "franken.dfz", "entry": "MAP01"},
-        {"source": "hoe2.wad", "entry": "MAP01"},
         {"source": "makkad.wad", "entry": "MAP01"},
         {"source": "Stupidity_Coop.wad", "entry": "MAP01"},
         {"source": "Timewall.wad", "entry": "MAP01"},
