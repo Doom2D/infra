@@ -329,12 +329,6 @@
         ]
     },
     {
-        "source": "MEGADM_2.wad",
-        "maps": [
-            "LEVEL"
-        ]
-    },
-    {
         "source": "megadm-hipster.wad",
         "maps": [
             "MAP01"
