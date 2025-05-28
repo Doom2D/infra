@@ -1,32 +1,5 @@
 [
     {
-        "source": "YE0F_DM.dfz",
-        "maps": [
-            "map01",
-            "map02",
-            "map03",
-            "map04",
-            "map05",
-            "map06",
-            "map07",
-            "map08",
-            "map09",
-            "map11",
-            "MAP10",
-            "MAP12",
-            "MAP13",
-            "MAP14",
-            "MAP15",
-            "MAP16",
-            "MAP17",
-            "MAP18",
-            "MAP19",
-            "MAP20",
-            "MAP21",
-            "MAP22"
-        ]
-    },
-    {
         "source": "SUPERDM2.dfz",
         "maps": [
             "map01"
