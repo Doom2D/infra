@@ -24,7 +24,7 @@ in {
   config = let
     timeZone = "Europe/Berlin";
     hostName = "germany";
-    serverName = mode: "Germany ${mode}";
+    serverName = mode: "Germany (GMT+2, ${mode})";
     ports = {
       game = {
         d2dmp = 37825;
@@ -62,7 +62,7 @@ in {
     services.gg2 = (inputs.cells.ganggarrison.nixosTemplates.vanilla {inherit pkgs lib;}).deathmatch {
       port = 8190;
       hostPlayerName = "www.Doom2D.org";
-      serverName = "Germaany";
+      serverName = "German";
       welcomeMessage = "Welcome! Also check out this awesome DOOM-inspired platformer! ---> doom2d.org <---";
     };
 
@@ -72,7 +72,7 @@ in {
         inherit (pkgs) lib;
       })
       .deathmatch {
-        sv_name = "Germany";
+        sv_name = "German";
         sv_welcome = "------> t.me/doom2d | doom2d.org <-------";
         sv_port = ports.game.d2dmp;
       };
