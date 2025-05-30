@@ -171,6 +171,11 @@ in {
       maxPlayers = 24;
       gameMode = "coop";
 
+      motd = {
+        enable = false;
+        delay = 5 * 60;
+        message = "ЗАЛЕТАЙ В ЧАТ ИГРЫ t.me/doom2d СУЧКА";
+      };
       bots = {
         enable = true;
         count = 2;
@@ -200,6 +205,11 @@ in {
       maxPlayers = 24;
       gameMode = "dm";
 
+      motd = {
+        enable = false;
+        delay = 1 * 10;
+        message = "ЗАЛЕТАЙ В ЧАТ ИГРЫ t.me/doom2d СУЧКА";
+      };
       bots = {
         enable = true;
         count = 3;
