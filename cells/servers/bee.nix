@@ -15,7 +15,7 @@
   system = "x86_64-linux";
 in {
   inherit system;
-  pkgs = import inputs.nixpkgs {
+  pkgs = import inputs.nixpkgs-stable {
     inherit system;
     config = inputs.nixpkgs.lib.recursiveUpdate {} {
       permittedInsecurePackages = [

@@ -30,7 +30,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/release-24.11";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/release-25.05";
     d2df-flake = {
       url = "github:Doom2D/flake.nix";
       inputs = {nixpkgs.follows = "nixpkgs";};
