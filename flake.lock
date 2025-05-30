@@ -198,11 +198,11 @@
         "osxcross": "osxcross"
       },
       "locked": {
-        "lastModified": 1748459329,
-        "narHash": "sha256-1UYBHywx/Gwrt9a+YbDi1TLVZOGtguXMx0uSAXocPnU=",
+        "lastModified": 1748615475,
+        "narHash": "sha256-HrJ1ocvqZxOCU9EMVX0Q+2l78euJNOK1vxfpVYjg63w=",
         "owner": "Doom2D",
         "repo": "flake.nix",
-        "rev": "043ef7ad69b5b31105d4d305a70ddbdd52d2d719",
+        "rev": "550e6ef3efee13c95ff0f9bf0f098dccfb32460d",
         "type": "github"
       },
       "original": {
