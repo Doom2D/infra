@@ -9,8 +9,8 @@ stdenvNoCC.mkDerivation rec {
   version = "2.0";
   dontUnpack = true;
   src = fetchurl {
-    url = "https://github.com/Derpduck/Gang-Garrison-2/releases/download/Re-DSM-v2/Re-DSM.7z";
-    sha256 = "sha256-FiGLKMnnUzb26P/y5cJri4qXEeQRvi9dwz7w9dElPr4=";
+    url = "https://github.com/Derpduck/Gang-Garrison-2/releases/download/Re-DSM-v3/Re-DSM.7z";
+    sha256 = "sha256-YMEU5YoXW15U60iHcQ2zYnZdhi1UlOuIrtoWDwZphEk=";
   };
   nativeBuildInputs = [_7zz];
   installPhase = ''
