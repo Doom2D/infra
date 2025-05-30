@@ -27,7 +27,7 @@ in {
     interface = "ens3";
     timeZone = "Europe/Moscow";
     hostName = "msk";
-    serverName = mode: "TEST! Moscow (GMT+3, ${mode})";
+    serverName = mode: "Mitinsky Radio Market - Moscow (GMT+3, ${mode})";
     ports = {
       game = {
         d2dmp = 37825;
@@ -66,13 +66,18 @@ in {
       welcomeMessage = "Welcome! Also check out this awesome DOOM-inspired platformer! ---> doom2d.org <---";
     };
 
+    virtualisation.vmVariant = {
+      virtualisation.diskSize = 10000;
+      virtualisation.memorySize = 4096;
+    };
+
     services.d2dmp =
       (inputs.cells.d2dmp.nixosTemplates.d2dmp {
         inherit pkgs;
         inherit (pkgs) lib;
       })
       .deathmatch {
-        sv_name = "TEST! Moscow (GMT+3, DM)";
+        sv_name = "Moscow (GMT+3, DM)";
         sv_welcome = "------> t.me/doom2d | doom2d.org <-------";
         sv_port = ports.game.d2dmp;
       };
