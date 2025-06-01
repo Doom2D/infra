@@ -81,7 +81,7 @@
       enable = true;
       swiftshaderD3d8Dll = ./d3d8.dll;
       wine = pkgs.wineWow64Packages.minimal.override {
-        wineRelease = "staging";
+        wineRelease = "stable";
         x11Support = true;
       };
       openFirewall = true;

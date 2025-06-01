@@ -109,7 +109,7 @@
   in {
     swiftshaderD3d8Dll = ../../d2dmp/nixosTemplates/d3d8.dll;
     wine = pkgs.wineWow64Packages.minimal.override {
-      wineRelease = "staging";
+      wineRelease = "stable";
       x11Support = true;
     };
     gameExecutable = inputs.cells.ganggarrison.packages.gg2Patched;
